@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,25 +12,21 @@
   <title>sunshine village</title>
   <style>
     :root {
-      --text: #4a2a00;
-      --text-soft: rgba(74, 42, 0, 0.78);
-      --line: rgba(122, 76, 0, 0.18);
-      --panel: rgba(255, 248, 220, 0.38);
-      --panel-strong: rgba(255, 250, 232, 0.62);
-      --button: #f6b100;
-      --button-hover: #e5a300;
-      --white: #fffdf6;
-      --shadow: rgba(160, 108, 0, 0.12);
+      --text: #b36b00;
+      --text-soft: rgba(179, 107, 0, 0.82);
+      --line: rgba(196, 141, 18, 0.18);
+      --panel: rgba(255, 252, 236, 0.48);
+      --panel-strong: rgba(255, 253, 245, 0.72);
+      --button: #ffd84d;
+      --button-hover: #ffcf24;
+      --button-text: #9a5a00;
+      --shadow: rgba(190, 138, 11, 0.12);
+      --success: #7a8f00;
+      --error: #b44b1f;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      min-height: 100%;
-    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -36,15 +38,14 @@
       text-align: center;
       overflow: hidden;
       background:
-        radial-gradient(circle at 50% 18%, rgba(255, 247, 179, 0.95) 0%, rgba(255, 240, 140, 0.88) 14%, rgba(255, 224, 102, 0.68) 28%, rgba(255, 205, 64, 0.42) 40%, rgba(255, 189, 28, 0.18) 48%, rgba(255, 179, 0, 0) 56%),
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.96) 0%, rgba(255,250,205,0.94) 18%, rgba(255,243,153,0.70) 36%, rgba(255,232,92,0.28) 52%, rgba(255,225,70,0) 64%),
         linear-gradient(
           to bottom,
-          #fffdf2 0%,
-          #fff7cf 16%,
-          #ffef9c 34%,
-          #ffe06e 54%,
-          #ffd34d 72%,
-          #ffc933 100%
+          #ffffff 0%,
+          #fffef4 18%,
+          #fff9d8 42%,
+          #fff2a8 68%,
+          #ffe97b 100%
         );
       animation: skyPulse 16s ease-in-out infinite alternate;
     }
@@ -53,23 +54,23 @@
     body::after {
       content: "";
       position: fixed;
-      inset: -12%;
+      inset: -10%;
       pointer-events: none;
       z-index: 0;
     }
 
     body::before {
       background:
-        radial-gradient(circle at 22% 82%, rgba(255,255,255,0.34), transparent 28%),
-        radial-gradient(circle at 78% 16%, rgba(255,255,255,0.22), transparent 22%),
-        radial-gradient(circle at 65% 70%, rgba(255,255,255,0.16), transparent 24%);
-      animation: driftA 24s ease-in-out infinite alternate;
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.34), transparent 28%),
+        radial-gradient(circle at 78% 14%, rgba(255,255,255,0.28), transparent 22%),
+        radial-gradient(circle at 62% 68%, rgba(255,255,255,0.15), transparent 24%);
+      animation: driftA 22s ease-in-out infinite alternate;
     }
 
     body::after {
       background:
-        radial-gradient(circle at 50% 22%, rgba(255, 252, 230, 0.42), transparent 20%),
-        radial-gradient(circle at 40% 30%, rgba(255, 247, 190, 0.22), transparent 28%);
+        radial-gradient(circle at 50% 24%, rgba(255,250,210,0.35), transparent 22%),
+        radial-gradient(circle at 38% 30%, rgba(255,244,180,0.18), transparent 28%);
       animation: driftB 18s ease-in-out infinite alternate;
     }
 
@@ -78,7 +79,7 @@
       z-index: 1;
       max-width: 760px;
       width: calc(100% - 32px);
-      padding: 36px 24px;
+      padding: 38px 24px;
       border: 1px solid var(--line);
       border-radius: 28px;
       background: linear-gradient(to bottom, var(--panel-strong), var(--panel));
@@ -88,7 +89,7 @@
 
     h1 {
       margin: 0 0 10px;
-      font-size: clamp(2.5rem, 7vw, 4.4rem);
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
       line-height: 0.95;
       font-weight: 700;
       text-transform: lowercase;
@@ -137,23 +138,23 @@
       flex: 1 1 280px;
       min-width: 220px;
       padding: 14px 16px;
-      border: 1px solid rgba(122, 76, 0, 0.16);
+      border: 1px solid rgba(196, 141, 18, 0.18);
       border-radius: 14px;
-      background: rgba(255, 253, 244, 0.88);
+      background: rgba(255,255,248,0.92);
       color: var(--text);
       font-size: 1rem;
       outline: none;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
     }
 
     .signup-input::placeholder {
-      color: rgba(74, 42, 0, 0.48);
+      color: rgba(179, 107, 0, 0.48);
       text-transform: lowercase;
     }
 
     .signup-input:focus {
-      border-color: rgba(200, 136, 0, 0.42);
-      box-shadow: 0 0 0 4px rgba(255, 202, 40, 0.22);
+      border-color: rgba(210, 160, 18, 0.42);
+      box-shadow: 0 0 0 4px rgba(255, 224, 74, 0.22);
     }
 
     .button {
@@ -164,83 +165,67 @@
       border: none;
       border-radius: 14px;
       background: var(--button);
-      color: #5a3500;
+      color: var(--button-text);
       font-size: 1rem;
       font-weight: 650;
       text-decoration: none;
       cursor: pointer;
       transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
       text-transform: lowercase;
-      box-shadow: 0 8px 24px rgba(210, 145, 0, 0.18);
+      box-shadow: 0 8px 24px rgba(210, 145, 0, 0.14);
     }
 
     .button:hover {
       background: var(--button-hover);
       transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(210, 145, 0, 0.22);
+      box-shadow: 0 12px 28px rgba(210, 145, 0, 0.18);
     }
 
-    .button:active {
-      transform: translateY(0);
-    }
+    .button:active { transform: translateY(0); }
 
     .signup-note {
       margin-top: 12px;
       font-size: 0.9rem;
-      color: rgba(74, 42, 0, 0.62);
+      color: rgba(179, 107, 0, 0.62);
       text-transform: lowercase;
     }
+
+    .status {
+      min-height: 1.25rem;
+      margin-top: 14px;
+      font-size: 0.95rem;
+      text-transform: lowercase;
+    }
+
+    .status.success { color: var(--success); }
+    .status.error { color: var(--error); }
 
     .footer {
       margin-top: 28px;
       font-size: 0.92rem;
-      color: rgba(74, 42, 0, 0.58);
+      color: rgba(179, 107, 0, 0.58);
       text-transform: lowercase;
     }
 
     @keyframes skyPulse {
-      0% {
-        filter: saturate(1) brightness(1);
-      }
-      100% {
-        filter: saturate(1.06) brightness(1.03);
-      }
+      0% { filter: saturate(1) brightness(1); }
+      100% { filter: saturate(1.05) brightness(1.02); }
     }
 
     @keyframes driftA {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      100% {
-        transform: translate3d(0, -10px, 0) scale(1.03);
-      }
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(0, -10px, 0) scale(1.03); }
     }
 
     @keyframes driftB {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translate3d(0, 8px, 0) scale(1.02);
-        opacity: 1;
-      }
+      0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+      100% { transform: translate3d(0, 8px, 0) scale(1.02); opacity: 1; }
     }
 
     @media (max-width: 640px) {
-      .container {
-        padding: 28px 18px;
-        border-radius: 22px;
-      }
-
-      .signup-form {
-        flex-direction: column;
-      }
-
-      .button,
-      .signup-input {
-        width: 100%;
-      }
+      .container { padding: 28px 18px; border-radius: 22px; }
+      .signup-form { flex-direction: column; }
+      .button, .signup-input { width: 100%; }
     }
   </style>
 </head>
@@ -258,7 +243,7 @@
         get occasional updates as the village comes into form
       </label>
 
-      <form class="signup-form" action="#" method="post">
+      <form class="signup-form" id="signup-form">
         <input
           class="signup-input"
           id="email"
@@ -270,14 +255,157 @@
         <button class="button" type="submit">join updates</button>
       </form>
 
-      <div class="signup-note">
-        gentle updates only
-      </div>
+      <div class="signup-note">gentle updates only</div>
+      <div class="status" id="status"></div>
     </div>
 
-    <div class="footer">
-      coming into form
-    </div>
+    <div class="footer">coming into form</div>
   </main>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    const statusEl = document.getElementById('status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      statusEl.textContent = 'joining...';
+      statusEl.className = 'status';
+
+      const email = document.getElementById('email').value.trim();
+
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'something went wrong');
+        }
+
+        form.reset();
+        statusEl.textContent = 'you are on the list';
+        statusEl.className = 'status success';
+      } catch (error) {
+        statusEl.textContent = error.message || 'something went wrong';
+        statusEl.className = 'status error';
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'method not allowed' });
+  }
+
+  try {
+    const { email } = req.body || {};
+
+    if (!email || typeof email !== 'string') {
+      return res.status(400).json({ error: 'email is required' });
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(cleanEmail)) {
+      return res.status(400).json({ error: 'please enter a valid email' });
+    }
+
+    const githubToken = process.env.GITHUB_TOKEN;
+    const githubOwner = process.env.GITHUB_OWNER;
+    const githubRepo = process.env.GITHUB_REPO;
+    const githubPath = process.env.GITHUB_SUBSCRIBERS_PATH || 'data/subscribers.csv';
+    const githubBranch = process.env.GITHUB_BRANCH || 'main';
+
+    if (!githubToken || !githubOwner || !githubRepo) {
+      return res.status(500).json({ error: 'server is missing github configuration' });
+    }
+
+    const apiBase = `https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${githubPath}`;
+    const headers = {
+      'Authorization': `Bearer ${githubToken}`,
+      'Accept': 'application/vnd.github+json',
+      'User-Agent': 'sunshinevillage-subscribe'
+    };
+
+    let sha = null;
+    let existingContent = 'email,source,subscribed_at\n';
+
+    const getResp = await fetch(`${apiBase}?ref=${encodeURIComponent(githubBranch)}`, { headers });
+
+    if (getResp.ok) {
+      const file = await getResp.json();
+      sha = file.sha;
+      existingContent = Buffer.from(file.content, 'base64').toString('utf8');
+    } else if (getResp.status !== 404) {
+      const text = await getResp.text();
+      return res.status(500).json({ error: `could not read subscriber list: ${text}` });
+    }
+
+    const existingLines = existingContent.split('\n').map(line => line.trim()).filter(Boolean);
+    const alreadyExists = existingLines.slice(1).some(line => line.split(',')[0] === cleanEmail);
+
+    if (alreadyExists) {
+      return res.status(200).json({ ok: true, message: 'already subscribed' });
+    }
+
+    const subscribedAt = new Date().toISOString();
+    const newLine = `${cleanEmail},website,${subscribedAt}`;
+    const updatedContent = `${existingContent.trimEnd()}\n${newLine}\n`;
+    const encodedContent = Buffer.from(updatedContent, 'utf8').toString('base64');
+
+    const body = {
+      message: `add subscriber ${cleanEmail}`,
+      content: encodedContent,
+      branch: githubBranch
+    };
+
+    if (sha) {
+      body.sha = sha;
+    }
+
+    const putResp = await fetch(apiBase, {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!putResp.ok) {
+      const text = await putResp.text();
+      return res.status(500).json({ error: `could not save subscriber: ${text}` });
+    }
+
+    return res.status(200).json({ ok: true });
+  } catch (error) {
+    return res.status(500).json({ error: 'server error' });
+  }
+}
+
+
+
+
+
+
+email,source,subscribed_at
+
+
+
+
+
+
+
+
