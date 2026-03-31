@@ -4,20 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>sunshine village</title>
+
   <style>
     :root {
-      --text: #b36b00;
-      --text-soft: rgba(179, 107, 0, 0.82);
-      --line: rgba(196, 141, 18, 0.18);
-      --panel: rgba(255, 252, 236, 0.48);
-      --panel-strong: rgba(255, 253, 245, 0.72);
-      --button: #ffd84d;
-      --button-hover: #ffcf24;
-      --button-text: #9a5a00;
-      --shadow: rgba(190, 138, 11, 0.12);
-      --success: #7a8f00;
-      --error: #b44b1f;
-      --info: #8a5a00;
+      --text: #ff8a00;
+      --text-soft: rgba(255, 138, 0, 0.8);
+
+      --line: rgba(255, 170, 0, 0.2);
+
+      --panel: rgba(255, 252, 235, 0.5);
+      --panel-strong: rgba(255, 253, 245, 0.75);
+
+      --button: #ffe066;
+      --button-hover: #ffd43b;
+      --button-text: #c26b00;
+
+      --shadow: rgba(255, 170, 0, 0.15);
+
+      --success: #6b8e00;
+      --error: #cc4400;
+      --info: #aa6600;
     }
 
     * { box-sizing: border-box; }
@@ -32,17 +38,21 @@
       min-height: 100vh;
       text-align: center;
       overflow: hidden;
+
       background:
-        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.96) 0%, rgba(255,250,205,0.94) 18%, rgba(255,243,153,0.70) 36%, rgba(255,232,92,0.28) 52%, rgba(255,225,70,0) 64%),
+        radial-gradient(circle at 50% 15%, rgba(255,255,255,0.95) 0%, rgba(255,255,200,0.95) 18%, rgba(255,240,120,0.75) 40%, rgba(255,220,60,0.35) 60%, rgba(255,210,40,0.1) 75%, transparent 85%),
+        radial-gradient(circle at 80% 10%, rgba(255,180,60,0.15), transparent 40%),
+        radial-gradient(circle at 20% 90%, rgba(255,200,80,0.12), transparent 40%),
         linear-gradient(
           to bottom,
           #ffffff 0%,
-          #fffef4 18%,
-          #fff9d8 42%,
-          #fff2a8 68%,
-          #ffe97b 100%
+          #fffef2 15%,
+          #fff9cc 40%,
+          #fff099 70%,
+          #ffe066 100%
         );
-      animation: skyPulse 16s ease-in-out infinite alternate;
+
+      animation: skyPulse 14s ease-in-out infinite alternate;
     }
 
     body::before,
@@ -56,16 +66,14 @@
 
     body::before {
       background:
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.34), transparent 28%),
-        radial-gradient(circle at 78% 14%, rgba(255,255,255,0.28), transparent 22%),
-        radial-gradient(circle at 62% 68%, rgba(255,255,255,0.15), transparent 24%);
-      animation: driftA 22s ease-in-out infinite alternate;
+        radial-gradient(circle at 25% 80%, rgba(255,255,255,0.35), transparent 30%),
+        radial-gradient(circle at 75% 20%, rgba(255,230,150,0.25), transparent 30%);
+      animation: driftA 20s ease-in-out infinite alternate;
     }
 
     body::after {
       background:
-        radial-gradient(circle at 50% 24%, rgba(255,250,210,0.35), transparent 22%),
-        radial-gradient(circle at 38% 30%, rgba(255,244,180,0.18), transparent 28%);
+        radial-gradient(circle at 50% 30%, rgba(255,200,80,0.15), transparent 30%);
       animation: driftB 18s ease-in-out infinite alternate;
     }
 
@@ -74,27 +82,28 @@
       z-index: 1;
       max-width: 760px;
       width: calc(100% - 32px);
-      padding: 38px 24px;
+      padding: 40px 24px;
       border: 1px solid var(--line);
       border-radius: 28px;
       background: linear-gradient(to bottom, var(--panel-strong), var(--panel));
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 60px var(--shadow);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px var(--shadow);
     }
 
     h1 {
       margin: 0 0 10px;
-      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-size: clamp(2.8rem, 7vw, 4.6rem);
       line-height: 0.95;
       font-weight: 700;
       text-transform: lowercase;
       letter-spacing: -0.04em;
+      color: #ff8a00;
     }
 
     h2 {
       margin: 0 0 24px;
-      font-size: clamp(1.05rem, 2.6vw, 1.45rem);
-      font-weight: 450;
+      font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+      font-weight: 500;
       color: var(--text-soft);
       text-transform: lowercase;
     }
@@ -102,7 +111,7 @@
     .tagline {
       max-width: 620px;
       margin: 0 auto 28px;
-      font-size: clamp(1.08rem, 2.4vw, 1.34rem);
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
       line-height: 1.55;
       color: var(--text);
       text-transform: lowercase;
@@ -116,7 +125,7 @@
     .signup-label {
       display: block;
       margin-bottom: 12px;
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: var(--text-soft);
       text-transform: lowercase;
     }
@@ -125,72 +134,58 @@
       display: flex;
       gap: 10px;
       justify-content: center;
-      align-items: stretch;
       flex-wrap: wrap;
     }
 
     .signup-input {
       flex: 1 1 280px;
-      min-width: 220px;
       padding: 14px 16px;
-      border: 1px solid rgba(196, 141, 18, 0.18);
+      border: 1px solid rgba(255, 170, 0, 0.25);
       border-radius: 14px;
-      background: rgba(255,255,248,0.92);
+      background: rgba(255,255,250,0.95);
       color: var(--text);
       font-size: 1rem;
       outline: none;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
     }
 
     .signup-input::placeholder {
-      color: rgba(179, 107, 0, 0.48);
-      text-transform: lowercase;
+      color: rgba(255, 140, 0, 0.5);
     }
 
     .signup-input:focus {
-      border-color: rgba(210, 160, 18, 0.42);
-      box-shadow: 0 0 0 4px rgba(255, 224, 74, 0.22);
+      border-color: rgba(255, 180, 0, 0.6);
+      box-shadow: 0 0 0 4px rgba(255, 220, 60, 0.3);
     }
 
     .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 14px 18px;
       border: none;
       border-radius: 14px;
       background: var(--button);
       color: var(--button-text);
       font-size: 1rem;
-      font-weight: 650;
-      text-decoration: none;
+      font-weight: 600;
       cursor: pointer;
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
       text-transform: lowercase;
-      box-shadow: 0 8px 24px rgba(210, 145, 0, 0.14);
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 30px rgba(255, 170, 0, 0.25);
     }
 
     .button:hover {
       background: var(--button-hover);
       transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(210, 145, 0, 0.18);
     }
-
-    .button:active { transform: translateY(0); }
 
     .signup-note {
       margin-top: 12px;
       font-size: 0.9rem;
-      color: rgba(179, 107, 0, 0.62);
-      text-transform: lowercase;
+      color: rgba(255, 140, 0, 0.6);
     }
 
     .status {
       min-height: 1.25rem;
       margin-top: 14px;
       font-size: 0.95rem;
-      text-transform: lowercase;
-      white-space: pre-line;
     }
 
     .status.success { color: var(--success); }
@@ -200,32 +195,31 @@
     .footer {
       margin-top: 28px;
       font-size: 0.92rem;
-      color: rgba(179, 107, 0, 0.58);
-      text-transform: lowercase;
+      color: rgba(255, 140, 0, 0.55);
     }
 
     @keyframes skyPulse {
       0% { filter: saturate(1) brightness(1); }
-      100% { filter: saturate(1.05) brightness(1.02); }
+      100% { filter: saturate(1.08) brightness(1.03); }
     }
 
     @keyframes driftA {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(0, -10px, 0) scale(1.03); }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
     }
 
     @keyframes driftB {
-      0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
-      100% { transform: translate3d(0, 8px, 0) scale(1.02); opacity: 1; }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(8px); }
     }
 
     @media (max-width: 640px) {
-      .container { padding: 28px 18px; border-radius: 22px; }
+      .container { padding: 28px 18px; }
       .signup-form { flex-direction: column; }
-      .button, .signup-input { width: 100%; }
     }
   </style>
 </head>
+
 <body>
   <main class="container">
     <h1>sunshine village</h1>
@@ -236,19 +230,12 @@
     </div>
 
     <div class="signup-wrap">
-      <label class="signup-label" for="email">
+      <label class="signup-label">
         get occasional updates as the village comes into form
       </label>
 
       <form class="signup-form" id="signup-form">
-        <input
-          class="signup-input"
-          id="email"
-          name="email"
-          type="email"
-          placeholder="your email"
-          required
-        />
+        <input class="signup-input" id="email" type="email" placeholder="your email" required />
         <button class="button" type="submit">join updates</button>
       </form>
 
@@ -263,37 +250,35 @@
     const form = document.getElementById('signup-form');
     const statusEl = document.getElementById('status');
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       statusEl.textContent = 'joining...';
       statusEl.className = 'status info';
 
-      const email = document.getElementById('email').value.trim();
+      const email = document.getElementById('email').value;
 
       try {
-        const response = await fetch('/api/subscribe', {
+        const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email })
         });
 
-        const data = await response.json();
+        const data = await res.json();
 
-        if (!response.ok) {
-          throw new Error(data.error || 'something went wrong');
-        }
+        if (!res.ok) throw new Error(data.error);
 
         form.reset();
 
         if (data.message === 'already subscribed') {
-          statusEl.textContent = `already subscribed\n${data.path} • ${data.branch}`;
+          statusEl.textContent = 'already subscribed';
         } else {
-          statusEl.textContent = `you are on the list\n${data.path} • ${data.branch}`;
+          statusEl.textContent = 'you are on the list';
         }
 
         statusEl.className = 'status success';
-      } catch (error) {
-        statusEl.textContent = error.message || 'something went wrong';
+      } catch (err) {
+        statusEl.textContent = err.message;
         statusEl.className = 'status error';
       }
     });
