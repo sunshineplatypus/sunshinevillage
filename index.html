@@ -17,6 +17,7 @@
       --shadow: rgba(190, 138, 11, 0.12);
       --success: #7a8f00;
       --error: #b44b1f;
+      --info: #8a5a00;
     }
 
     * { box-sizing: border-box; }
@@ -189,10 +190,12 @@
       margin-top: 14px;
       font-size: 0.95rem;
       text-transform: lowercase;
+      white-space: pre-line;
     }
 
     .status.success { color: var(--success); }
     .status.error { color: var(--error); }
+    .status.info { color: var(--info); }
 
     .footer {
       margin-top: 28px;
@@ -263,7 +266,7 @@
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       statusEl.textContent = 'joining...';
-      statusEl.className = 'status';
+      statusEl.className = 'status info';
 
       const email = document.getElementById('email').value.trim();
 
@@ -281,7 +284,13 @@
         }
 
         form.reset();
-        statusEl.textContent = 'you are on the list';
+
+        if (data.message === 'already subscribed') {
+          statusEl.textContent = `already subscribed\n${data.path} • ${data.branch}`;
+        } else {
+          statusEl.textContent = `you are on the list\n${data.path} • ${data.branch}`;
+        }
+
         statusEl.className = 'status success';
       } catch (error) {
         statusEl.textContent = error.message || 'something went wrong';
