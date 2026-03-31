@@ -24,7 +24,9 @@ export default async function handler(req, res) {
     const githubBranch = process.env.GITHUB_BRANCH || 'main';
 
     if (!githubToken || !githubOwner || !githubRepo) {
-      return res.status(500).json({ error: 'server is missing github configuration' });
+      return res.status(500).json({
+        error: 'server is missing github configuration'
+      });
     }
 
     const apiBase = `https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${githubPath}`;
@@ -37,9 +39,10 @@ export default async function handler(req, res) {
     let sha = null;
     let existingContent = 'email,source,subscribed_at\n';
 
-    const getResp = await fetch(`${apiBase}?ref=${encodeURIComponent(githubBranch)}`, {
-      headers
-    });
+    const getResp = await fetch(
+      `${apiBase}?ref=${encodeURIComponent(githubBranch)}`,
+      { headers }
+    );
 
     if (getResp.ok) {
       const file = await getResp.json();
@@ -47,7 +50,9 @@ export default async function handler(req, res) {
       existingContent = Buffer.from(file.content, 'base64').toString('utf8');
     } else if (getResp.status !== 404) {
       const text = await getResp.text();
-      return res.status(500).json({ error: `could not read subscriber list: ${text}` });
+      return res.status(500).json({
+        error: `could not read subscriber list: ${text}`
+      });
     }
 
     const existingLines = existingContent
@@ -60,7 +65,13 @@ export default async function handler(req, res) {
       .some((line) => line.split(',')[0] === cleanEmail);
 
     if (alreadyExists) {
-      return res.status(200).json({ ok: true, message: 'already subscribed' });
+      return res.status(200).json({
+        ok: true,
+        message: 'already subscribed',
+        email: cleanEmail,
+        path: githubPath,
+        branch: githubBranch
+      });
     }
 
     const subscribedAt = new Date().toISOString();
@@ -89,11 +100,21 @@ export default async function handler(req, res) {
 
     if (!putResp.ok) {
       const text = await putResp.text();
-      return res.status(500).json({ error: `could not save subscriber: ${text}` });
+      return res.status(500).json({
+        error: `could not save subscriber: ${text}`
+      });
     }
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({
+      ok: true,
+      message: 'subscribed',
+      email: cleanEmail,
+      path: githubPath,
+      branch: githubBranch
+    });
   } catch (error) {
-    return res.status(500).json({ error: 'server error' });
+    return res.status(500).json({
+      error: 'server error'
+    });
   }
 }
